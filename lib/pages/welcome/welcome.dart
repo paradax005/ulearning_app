@@ -1,13 +1,12 @@
-
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/values/colors.dart';
 import 'bloc/welcome_bloc.dart';
 import 'bloc/welcome_events.dart';
 import 'bloc/welcome_states.dart';
-
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -21,7 +20,7 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.primaryBackground,
       body: BlocBuilder<WelcomeBloc, WelcomeState>(
         builder: (context, state) {
           return SafeArea(
@@ -68,8 +67,8 @@ class _WelcomePageState extends State<WelcomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     dotsCount: 3,
                     decorator: DotsDecorator(
-                      color: Colors.grey,
-                      activeColor: Colors.blue,
+                      color: AppColors.primaryThirdElementText,
+                      activeColor: AppColors.primaryElement,
                       size: const Size.square(8.0),
                       activeSize: const Size(18.0, 8.0),
                       activeShape: RoundedRectangleBorder(
@@ -104,11 +103,11 @@ class _WelcomePageState extends State<WelcomePage> {
             fit: BoxFit.cover,
           ),
         ),
-        Container(
+        SizedBox(
           child: Text(
             title,
             style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontSize: 24.sp,
               fontWeight: FontWeight.normal,
             ),
@@ -120,7 +119,7 @@ class _WelcomePageState extends State<WelcomePage> {
             subTitle,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black.withOpacity(.5),
+              color: AppColors.primarySecondaryElementText,
               fontSize: 16.sp,
               fontWeight: FontWeight.normal,
             ),
@@ -137,13 +136,8 @@ class _WelcomePageState extends State<WelcomePage> {
               );
             } else {
               // Jump to new page
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => const CounterPage(),
-              //   ),
-              // );
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil('home', (route) => false);
+                  .pushNamedAndRemoveUntil('signIn', (route) => false);
             }
           },
           child: Container(
@@ -151,7 +145,7 @@ class _WelcomePageState extends State<WelcomePage> {
             width: 325.w,
             height: 50.h,
             decoration: BoxDecoration(
-                color: Colors.blue,
+                color: AppColors.primaryElement,
                 borderRadius: BorderRadius.all(
                   Radius.circular(15.w),
                 ),
@@ -167,7 +161,7 @@ class _WelcomePageState extends State<WelcomePage> {
               child: Text(
                 buttonName,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.primaryBackground,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.normal,
                 ),

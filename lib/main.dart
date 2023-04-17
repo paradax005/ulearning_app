@@ -2,12 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/pages/counter/app_blocs.dart';
-import 'package:ulearning_app/pages/sign_in/bloc/sign_in_blocs.dart';
-import 'package:ulearning_app/pages/sign_in/sign_in.dart';
+import 'common/routes/pages.dart';
+import 'common/values/colors.dart';
 import 'firebase_options.dart';
-import 'pages/welcome/bloc/welcome_bloc.dart';
-import 'pages/welcome/welcome.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,21 +12,17 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(const Core());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Core extends StatelessWidget {
+  const Core({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(lazy: false, create: (context) => WelcomeBloc()),
-        BlocProvider(create: (context) => AppBlocs()),
-        BlocProvider(create: (context) => SignInBloc())
-      ],
+      providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
         builder: (context, child) {
           return MaterialApp(
@@ -39,12 +32,12 @@ class MyApp extends StatelessWidget {
                 centerTitle: true,
                 backgroundColor: Colors.white,
                 elevation: 0,
+                iconTheme: IconThemeData(
+                  color: AppColors.primaryText,
+                ),
               ),
             ),
-            routes: {
-              '/': (context) => const WelcomePage(),
-              'signIn': (context) => const SignInPage(),
-            },
+            onGenerateRoute: AppPages.generateRouteSettings,
           );
         },
       ),

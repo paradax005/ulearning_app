@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/values/colors.dart';
-import 'package:ulearning_app/pages/auth/sign_in/bloc/sign_in_blocs.dart';
-import 'package:ulearning_app/pages/auth/sign_in/bloc/sign_in_events.dart';
-import 'package:ulearning_app/pages/auth/sign_in/bloc/sign_in_states.dart';
-import 'package:ulearning_app/pages/auth/sign_in/sign_in_controller.dart';
-import 'package:ulearning_app/pages/auth/sign_in/widgets/sign_in_widgets.dart';
+import '../../../common/routes/routes.dart';
+import '../../../common/values/colors.dart';
+import 'bloc/sign_in_blocs.dart';
+import 'bloc/sign_in_events.dart';
+import 'bloc/sign_in_states.dart';
+import 'sign_in_controller.dart';
+import 'widgets/sign_in_widgets.dart';
 
 import '../common_widgets.dart';
 
@@ -61,7 +62,7 @@ class SignInPage extends StatelessWidget {
                   SignInController(context: context).handleSignIn('email');
                 }),
                 buildLogInAndRegButton("Register", "register", () {
-                  Navigator.pushNamed(context, "/register");
+                  Navigator.pushNamed(context, AppRoutes.REGISTER);
                 }),
               ],
             ),

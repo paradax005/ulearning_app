@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/routes/routes.dart';
+import '../../common/values/constant.dart';
 import '../../common/values/colors.dart';
+import '../../global.dart';
+
 import 'bloc/welcome_bloc.dart';
 import 'bloc/welcome_events.dart';
 import 'bloc/welcome_states.dart';
@@ -136,8 +140,12 @@ class _WelcomePageState extends State<WelcomePage> {
               );
             } else {
               // Jump to new page
+
+              Global.storageService.writeBoolInStorage(
+                  AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil('/sign_in', (route) => false);
+                  .pushNamedAndRemoveUntil(AppRoutes.SIGN_IN, (route) => false);
             }
           },
           child: Container(

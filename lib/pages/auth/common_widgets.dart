@@ -14,8 +14,7 @@ AppBar buildAppBar(String title) {
       ),
     ),
     title: Text(
-      title
-      ,
+      title,
       style: TextStyle(
         color: AppColors.primaryText,
         fontSize: 16.sp,
@@ -73,6 +72,7 @@ Widget buildTextField({
             obscureText: obscureText,
             autocorrect: false,
             decoration: InputDecoration(
+              
               hintText: hintText,
               hintStyle: TextStyle(
                 color: AppColors.primarySecondaryElementText,

@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ulearning_app/common/values/constant.dart';
+import 'package:ulearning_app/common/constants/constant.dart';
 
 class StorageService {
   late SharedPreferences _pref;
@@ -22,8 +22,6 @@ class StorageService {
   }
 
   bool getUserIsLoggedIn() {
-    return _pref.getString(AppConstants.STORAGE_USER_TOKEN_KEY) == null
-        ? false
-        : true;
+    return _pref.getString(AppConstants.STORAGE_USER_TOKEN_KEY) == null ? false : true;
   }
 }

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ulearning_app/common/constants/constant.dart';
 import 'package:ulearning_app/common/routes/routes.dart';
-import 'package:ulearning_app/common/values/constant.dart';
 import 'package:ulearning_app/common/widgets/flutter_toast.dart';
 import 'package:ulearning_app/global.dart';
 import 'package:ulearning_app/pages/auth/sign_in/bloc/sign_in_blocs.dart';
@@ -31,9 +31,8 @@ class SignInController {
         }
 
         try {
-          final credential = await FirebaseAuth.instance
-              .signInWithEmailAndPassword(
-                  email: emailAddress, password: password);
+          final credential =
+              await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailAddress, password: password);
           if (credential.user == null) {}
           if (!credential.user!.emailVerified) {}
 
@@ -45,8 +44,7 @@ class SignInController {
             } else {
               // Login User
               toastInfo(msg: "congrats you are logged in");
-              Global.storageService.writeStringInStorage(
-                  AppConstants.STORAGE_USER_TOKEN_KEY, user.uid);
+              Global.storageService.writeStringInStorage(AppConstants.STORAGE_USER_TOKEN_KEY, user.uid);
               Navigator.popAndPushNamed(context, AppRoutes.APPLICATION);
             }
           } else {
@@ -64,7 +62,7 @@ class SignInController {
         }
       }
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 }

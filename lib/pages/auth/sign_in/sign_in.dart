@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/common/res/media_res.dart';
+
+import '../../../common/res/colors.dart';
 import '../../../common/routes/routes.dart';
-import '../../../common/values/colors.dart';
+import '../common_widgets.dart';
 import 'bloc/sign_in_blocs.dart';
 import 'bloc/sign_in_events.dart';
 import 'bloc/sign_in_states.dart';
 import 'sign_in_controller.dart';
 import 'widgets/sign_in_widgets.dart';
-
-import '../common_widgets.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -39,7 +40,7 @@ class SignInPage extends StatelessWidget {
                       SizedBox(height: 5.h),
                       buildTextField(
                         hintText: "Enter your email address",
-                        iconName: "user",
+                        iconName: MediaRes.user,
                         onChanged: (value) {
                           context.read<SignInBloc>().add(EmailEvent(value));
                         },
@@ -49,7 +50,7 @@ class SignInPage extends StatelessWidget {
                       buildTextField(
                         hintText: "Enter your password",
                         obscureText: true,
-                        iconName: "lock",
+                        iconName: MediaRes.lock,
                         onChanged: (value) {
                           context.read<SignInBloc>().add(PasswordEvent(value));
                         },
@@ -58,6 +59,7 @@ class SignInPage extends StatelessWidget {
                   ),
                 ),
                 forgotPassword(),
+                SizedBox(height: 50.h),
                 buildLogInAndRegButton("Log In", "login", () async {
                   SignInController(context: context).handleSignIn('email');
                 }),

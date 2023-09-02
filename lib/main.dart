@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'common/res/colors.dart';
 import 'common/routes/pages.dart';
-import 'common/values/colors.dart';
 import 'global.dart';
 
 Future<void> main() async {
@@ -19,6 +20,7 @@ class Core extends StatelessWidget {
     return MultiBlocProvider(
       providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
+        designSize: const Size(375, 812),
         builder: (context, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,

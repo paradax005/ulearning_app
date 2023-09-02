@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/common/res/media_res.dart';
 import 'package:ulearning_app/pages/auth/register/bloc/register_events.dart';
 import 'package:ulearning_app/pages/auth/register/register_controller.dart';
 
 import './bloc/register_blocs.dart';
 import './bloc/register_states.dart';
-import '../../../common/values/colors.dart';
+import '../../../common/res/colors.dart';
 import '../common_widgets.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -36,17 +37,15 @@ class RegisterPage extends StatelessWidget {
                       textUtil("User name"),
                       buildTextField(
                         hintText: "Enter your user name",
-                        iconName: "user",
+                        iconName: MediaRes.user,
                         onChanged: (value) {
-                          context
-                              .read<RegisterBloc>()
-                              .add(UserNameEvent(value));
+                          context.read<RegisterBloc>().add(UserNameEvent(value));
                         },
                       ),
                       textUtil("Email"),
                       buildTextField(
                         hintText: "Enter your email address",
-                        iconName: "user",
+                        iconName: MediaRes.user,
                         onChanged: (value) {
                           context.read<RegisterBloc>().add(EmailEvent(value));
                         },
@@ -55,27 +54,24 @@ class RegisterPage extends StatelessWidget {
                       buildTextField(
                         hintText: "Enter your password",
                         obscureText: true,
-                        iconName: "lock",
+                        iconName: MediaRes.lock,
                         onChanged: (value) {
-                          context
-                              .read<RegisterBloc>()
-                              .add(PasswordEvent(value));
+                          context.read<RegisterBloc>().add(PasswordEvent(value));
                         },
                       ),
                       textUtil("Confirm Password"),
                       buildTextField(
                         hintText: "Enter your confirm password",
                         obscureText: true,
-                        iconName: "lock",
+                        iconName: MediaRes.lock,
                         onChanged: (value) {
-                          context
-                              .read<RegisterBloc>()
-                              .add(RePasswordEvent(value));
+                          context.read<RegisterBloc>().add(RePasswordEvent(value));
                         },
                       ),
                     ],
                   ),
                 ),
+                SizedBox(height: 20.h),
                 Container(
                   width: 270.w,
                   margin: EdgeInsets.only(left: 25.w),

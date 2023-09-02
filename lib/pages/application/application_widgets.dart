@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/common/res/media_res.dart';
+import 'package:ulearning_app/pages/home/home.dart';
 
-import '../../common/values/colors.dart';
+import '../../common/res/colors.dart';
 
 Widget buildPage(int index) {
   List<Widget> widgets = const [
-    Center(child: Text('Home')),
+    HomePage(),
     Center(child: Text('Search')),
     Center(child: Text('Course')),
     Center(child: Text('Chat')),
@@ -21,14 +23,14 @@ BottomNavigationBarItem bottomTabsItem(String iconName, String label) {
       width: 15.w,
       height: 15.h,
       child: Image.asset(
-        "assets/icons/$iconName.png",
+        iconName,
       ),
     ),
     activeIcon: SizedBox(
       width: 15.w,
       height: 15.h,
       child: Image.asset(
-        "assets/icons/$iconName.png",
+        iconName,
         color: AppColors.primaryElement,
       ),
     ),
@@ -37,9 +39,9 @@ BottomNavigationBarItem bottomTabsItem(String iconName, String label) {
 }
 
 var bottomTabs = [
-  bottomTabsItem("home", "Home"),
-  bottomTabsItem("search", "Search"),
-  bottomTabsItem("play-circle", "Course"),
-  bottomTabsItem("message-circle", "Chat"),
-  bottomTabsItem("person", "Profile"),
+  bottomTabsItem(MediaRes.home, "Home"),
+  bottomTabsItem(MediaRes.search, "Search"),
+  bottomTabsItem(MediaRes.playCircle, "Course"),
+  bottomTabsItem(MediaRes.messageCircle, "Chat"),
+  bottomTabsItem(MediaRes.person, "Profile"),
 ];

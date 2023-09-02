@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 class AppColors {
+  const AppColors._();
+
   /// white background
   static const Color primaryBackground = Color(0xFFFFFFFF);
 

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/values/colors.dart';
+import 'package:ulearning_app/common/res/colors.dart';
+import 'package:ulearning_app/common/res/media_res.dart';
 
 Widget buildThirdPartyLogin(BuildContext context) {
   return Container(
     margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
-    padding: EdgeInsets.symmetric(horizontal: 25.w),
+    padding: EdgeInsets.symmetric(horizontal: 50.w),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _socialIcon('google'),
-        _socialIcon('apple'),
-        _socialIcon('facebook'),
+        _socialIcon(MediaRes.google),
+        _socialIcon(MediaRes.apple),
+        _socialIcon(MediaRes.facebook),
       ],
     ),
   );
@@ -23,7 +24,7 @@ Widget _socialIcon(String path) {
     child: SizedBox(
       width: 40.w,
       height: 40.w,
-      child: Image.asset("assets/icons/$path.png"),
+      child: Image.asset(path),
     ),
   );
 }

@@ -2,11 +2,11 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../common/routes/routes.dart';
-import '../../common/values/constant.dart';
-import '../../common/values/colors.dart';
-import '../../global.dart';
+import 'package:ulearning_app/common/constants/constant.dart';
+import 'package:ulearning_app/common/res/colors.dart';
+import 'package:ulearning_app/common/res/media_res.dart';
+import 'package:ulearning_app/common/routes/names.dart';
+import 'package:ulearning_app/global.dart';
 
 import 'bloc/welcome_bloc.dart';
 import 'bloc/welcome_events.dart';
@@ -41,18 +41,18 @@ class _WelcomePageState extends State<WelcomePage> {
                     _page(
                       0,
                       context,
-                      "next",
+                      "Next",
                       "First See Learning",
                       'Forgot about a four of paper all knowledge in one learning',
-                      'assets/images/reading.png',
+                      MediaRes.onBoarding1,
                     ),
                     _page(
                       1,
                       context,
-                      "next",
+                      "Next",
                       "Connect with Everyone",
                       'Always keep in touch with your tutor and friend. let\'s get connected ',
-                      'assets/images/boy.png',
+                      MediaRes.onBoarding2,
                     ),
                     _page(
                       2,
@@ -60,7 +60,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       "Get Started",
                       "Always Fascinated Learning",
                       'Anywhere, anytime. The time is at your discretion so study whenever you want.',
-                      'assets/images/man.png',
+                      MediaRes.onBoarding3,
                     ),
                   ],
                 ),
@@ -107,16 +107,18 @@ class _WelcomePageState extends State<WelcomePage> {
             fit: BoxFit.cover,
           ),
         ),
+        SizedBox(height: 20.h),
         SizedBox(
           child: Text(
             title,
             style: TextStyle(
               color: AppColors.primaryText,
               fontSize: 24.sp,
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
+        SizedBox(height: 20.h),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Text(
@@ -141,17 +143,15 @@ class _WelcomePageState extends State<WelcomePage> {
             } else {
               // Jump to new page
 
-              Global.storageService.writeBoolInStorage(
-                  AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              Global.storageService.writeBoolInStorage(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
 
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil(AppRoutes.SIGN_IN, (route) => false);
+              Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.SIGN_IN, (route) => false);
             }
           },
           child: Container(
             margin: EdgeInsets.only(top: 100.h, left: 25.w, right: 25.w),
             width: 325.w,
-            height: 50.h,
+            height: 55.h,
             decoration: BoxDecoration(
                 color: AppColors.primaryElement,
                 borderRadius: BorderRadius.all(

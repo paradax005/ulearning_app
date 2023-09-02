@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../common/values/colors.dart';
+import '../../common/res/colors.dart';
 
 AppBar buildAppBar(String title) {
   return AppBar(
@@ -47,7 +47,7 @@ Widget buildTextField({
   return Container(
     height: 50.h,
     width: 310.w,
-    margin: EdgeInsets.only(bottom: 10.h),
+    margin: EdgeInsets.only(bottom: 20.h),
     decoration: BoxDecoration(
       color: AppColors.primaryBackground,
       borderRadius: BorderRadius.all(
@@ -61,7 +61,7 @@ Widget buildTextField({
           width: 20.w,
           height: 20.w,
           margin: EdgeInsets.only(left: 15.w),
-          child: Image.asset("assets/icons/$iconName.png"),
+          child: Image.asset(iconName),
         ),
         SizedBox(
           width: 270.w,
@@ -72,7 +72,6 @@ Widget buildTextField({
             obscureText: obscureText,
             autocorrect: false,
             decoration: InputDecoration(
-              
               hintText: hintText,
               hintStyle: TextStyle(
                 color: AppColors.primarySecondaryElementText,
@@ -112,8 +111,7 @@ Widget buildTextField({
   );
 }
 
-Widget buildLogInAndRegButton(
-    String buttonText, String buttonType, void Function()? onTap) {
+Widget buildLogInAndRegButton(String buttonText, String buttonType, void Function()? onTap) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -125,9 +123,7 @@ Widget buildLogInAndRegButton(
       width: 310.w,
       height: 50.h,
       decoration: BoxDecoration(
-        color: buttonType == "login"
-            ? AppColors.primaryElement
-            : AppColors.primaryBackground,
+        color: buttonType == "login" ? AppColors.primaryElement : AppColors.primaryBackground,
         borderRadius: BorderRadius.all(
           Radius.circular(15.w),
         ),
@@ -151,9 +147,7 @@ Widget buildLogInAndRegButton(
           style: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.normal,
-            color: buttonType == "login"
-                ? AppColors.primaryBackground
-                : AppColors.primaryText,
+            color: buttonType == "login" ? AppColors.primaryBackground : AppColors.primaryText,
           ),
         ),
       ),

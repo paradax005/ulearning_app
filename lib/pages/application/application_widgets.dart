@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/res/media_res.dart';
 import 'package:ulearning_app/pages/home/home.dart';
+import 'package:ulearning_app/pages/profile/profile.dart';
 
 import '../../common/res/colors.dart';
 
@@ -11,7 +12,7 @@ Widget buildPage(int index) {
     Center(child: Text('Search')),
     Center(child: Text('Course')),
     Center(child: Text('Chat')),
-    Center(child: Text('Profile')),
+    ProfilePage(),
   ];
 
   return widgets[index];

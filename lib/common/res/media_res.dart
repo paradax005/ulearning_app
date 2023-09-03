@@ -23,6 +23,16 @@ class MediaRes {
   static const user = '$_baseIcon/user.png';
   static const playCircle = '$_baseIcon/play-circle.png';
   static const messageCircle = '$_baseIcon/message-circle.png';
+  static const moreVertical = '$_baseIcon/more-vertical.png';
+  static const headPic = '$_baseIcon/headpic.png';
+  static const edit = '$_baseIcon/edit_2.png';
+  static const edit3 = '$_baseIcon/edit_3.png';
+  static const settings = '$_baseIcon/settings.png';
+  static const award = '$_baseIcon/award.png';
+  static const creditCard = '$_baseIcon/credit-card.png';
+  static const heart1 = '$_baseIcon/heart(1).png';
+  static const cube = '$_baseIcon/cube.png';
+  static const logout = '$_baseIcon/Logout.png';
 
   // sliders
   static const art = '$_baseIcon/art.png';

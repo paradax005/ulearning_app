@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:ulearning_app/common/constants/constant.dart';
 import 'package:ulearning_app/common/res/colors.dart';
 import 'package:ulearning_app/common/routes/names.dart';
@@ -17,11 +19,24 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  void logout() {
+  Future<void> logout() async {
+    EasyLoading.show(
+      indicator: const CircularProgressIndicator(),
+      maskType: EasyLoadingMaskType.clear,
+      dismissOnTap: true,
+    );
     Navigator.of(context).pop();
-    Global.storageService.remove(AppConstants.STORAGE_USER_TOKEN_KEY);
     context.read<AppBlocs>().add(const TriggerAppEvent(0));
-    Navigator.pushNamedAndRemoveUntil(context, AppRoutes.SIGN_IN, (route) => false);
+    await FirebaseAuth.instance.signOut();
+    Global.storageService.remove(AppConstants.STORAGE_USER_TOKEN_KEY);
+    Global.storageService.remove(AppConstants.STORAGE_USER_PROFILE_KEY);
+    await Future.delayed(const Duration(seconds: 1), () {
+      print('Logout user ');
+    });
+    if (context.mounted) {
+      Navigator.pushNamedAndRemoveUntil(context, AppRoutes.SIGN_IN, (route) => false);
+      EasyLoading.dismiss();
+    }
   }
 
   @override

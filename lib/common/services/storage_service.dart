@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ulearning_app/common/constants/constant.dart';
+import 'package:ulearning_app/common/entities/user.dart';
 
 class StorageService {
   late SharedPreferences _pref;
@@ -13,7 +16,7 @@ class StorageService {
     return await _pref.setBool(key, value);
   }
 
-  Future<bool> writeStringInStorage(String key, String value) async {
+  Future<bool> setString(String key, String value) async {
     return await _pref.setString(key, value);
   }
 
@@ -27,5 +30,14 @@ class StorageService {
 
   Future<bool> remove(String key) async {
     return await _pref.remove(key);
+  }
+
+  UserItem? getUserProfile() {
+    var profileOffline = _pref.getString(AppConstants.STORAGE_USER_PROFILE_KEY) ?? '';
+
+    if (profileOffline.isNotEmpty) {
+      return UserItem.fromJson(jsonDecode(profileOffline));
+    }
+    return null;
   }
 }

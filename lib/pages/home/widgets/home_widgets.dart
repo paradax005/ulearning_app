@@ -4,11 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/res/colors.dart';
 import 'package:ulearning_app/common/res/media_res.dart';
+import 'package:ulearning_app/common/widgets/base_text.dart';
 import 'package:ulearning_app/pages/home/bloc/home_bloc.dart';
 import 'package:ulearning_app/pages/home/bloc/home_event.dart';
 import 'package:ulearning_app/pages/home/bloc/home_state.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar(String avatar) {
   return AppBar(
     title: SizedBox(
       child: Row(
@@ -19,13 +20,11 @@ AppBar buildAppBar() {
             height: 12.h,
             child: Image.asset(MediaRes.menu),
           ),
-          Container(
-            width: 40.w,
-            height: 40.h,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(MediaRes.person),
-              ),
+          Padding(
+            padding: EdgeInsets.only(top: 12.h, right: 10.w),
+            child: CircleAvatar(
+              radius: 22.r,
+              backgroundImage: NetworkImage(avatar),
             ),
           ),
         ],
@@ -196,10 +195,10 @@ Widget menuView() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            _reusableSubTitleText('Choose your course'),
+            reusableText('Choose your course'),
             GestureDetector(
               onTap: () {},
-              child: _reusableSubTitleText(
+              child: reusableText(
                 'See all',
                 color: AppColors.primaryThirdElementText,
                 fontSize: 12,
@@ -231,23 +230,6 @@ Widget menuView() {
   );
 }
 
-Widget _reusableSubTitleText(
-  String text, {
-  Color color = AppColors.primaryText,
-  int fontSize = 16,
-  FontWeight fontWeight = FontWeight.bold,
-}) =>
-    SizedBox(
-      child: Text(
-        text,
-        style: TextStyle(
-          color: color,
-          fontSize: fontSize.sp,
-          fontWeight: fontWeight,
-        ),
-      ),
-    );
-
 Widget _reusableMenuText(
   String menuText, {
   Color foregroundColor = AppColors.primaryElement,
@@ -261,7 +243,7 @@ Widget _reusableMenuText(
         borderRadius: BorderRadius.circular(7.w),
         border: Border.all(color: foregroundColor),
       ),
-      child: _reusableSubTitleText(
+      child: reusableText(
         menuText,
         color: textColor,
         fontSize: 11,

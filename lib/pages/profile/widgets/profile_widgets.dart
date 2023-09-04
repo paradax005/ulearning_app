@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/res/colors.dart';
 import 'package:ulearning_app/common/res/media_res.dart';
 import 'package:ulearning_app/common/routes/names.dart';
+import 'package:ulearning_app/common/widgets/base_text.dart';
 
 AppBar buildAppBar() {
   return AppBar(
@@ -15,14 +16,7 @@ AppBar buildAppBar() {
             width: 18.w,
             child: Image.asset(MediaRes.menu),
           ),
-          Text(
-            'Profile',
-            style: TextStyle(
-              color: AppColors.primaryText,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          reusableText('Profile'),
           SizedBox(
             height: 24.h,
             width: 24.w,
